@@ -187,6 +187,12 @@ return new class extends Migration {
             $table->unsignedBigInteger('taille_fichier');
             $table->timestamps();
         });
+        Schema::create('matiere_enseignant', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('matiere_id')->constrained()->onDelete('cascade');
+            $table->foreignId('enseignant_id')->constrained('teachers')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     public function down(): void

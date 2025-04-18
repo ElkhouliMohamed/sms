@@ -12,7 +12,6 @@ class Matiere extends Model
         'nom',
         'description',
         'classe_id',
-        'enseignant_id',
     ];
 
     public function classe()
@@ -20,9 +19,9 @@ class Matiere extends Model
         return $this->belongsTo(ClassModel::class, 'classe_id');
     }
 
-    public function enseignant()
+    public function enseignants()
     {
-        return $this->belongsTo(Teacher::class, 'enseignant_id');
+        return $this->belongsToMany(Teacher::class, 'matiere_enseignant', 'matiere_id', 'enseignant_id');
     }
 
     public function emploisDuTemps()
